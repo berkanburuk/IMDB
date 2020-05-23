@@ -1,5 +1,5 @@
 package com.Lunatech.IMDB.DAOService;
-/*
+
 import com.Lunatech.IMDB.Model.NameBasic;
 import com.Lunatech.IMDB.Repository.NameBasicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,18 @@ public class NameBasicJPAResource {
     @Autowired
     private NameBasicRepository nameBasicRepository;
 
+    @GetMapping("/nameBasic/{name}")
+    public Optional<NameBasic> getNameFromUser(@PathVariable String name){
+        Optional<NameBasic> nameBasicOptinal = nameBasicRepository.findById(name);
+        if (!nameBasicOptinal.isPresent()){
+            throw new RuntimeException();
+        }
+
+        //nameBasicOptinal.
+        return nameBasicOptinal;
+    }
+
+
     @GetMapping("/nameBasic")
     public List<NameBasic> retrieveAllName(){
         return nameBasicRepository.findAll();
@@ -31,4 +43,4 @@ public class NameBasicJPAResource {
     }
 
 
-}*/
+}

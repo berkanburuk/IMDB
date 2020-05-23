@@ -7,13 +7,13 @@ import java.io.Serializable;
 public class TitleCrew implements Serializable {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_TCONST")
     private TitleBasic tconst;
     //private String tconst;
-    //nconsts
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_Director")

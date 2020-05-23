@@ -5,8 +5,10 @@ import javax.persistence.*;
 @Entity
 public class TitleEpisode {
      @Id
-    private String id;
-    @ManyToOne(fetch = FetchType.LAZY)
+     @GeneratedValue
+    private int id;
+
+     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_Episode_tconst")
     private TitleBasic tconst;
     //private String tconst;
@@ -16,14 +18,16 @@ public class TitleEpisode {
     @JoinColumn(columnDefinition = "FK_Episode_parentTConst")
     private TitleBasic parentTconst;
     //private String parentTconst;
+    @Column(nullable=true)
     private int seasonNumber;
+    @Column(nullable=true)
     private int episodeNumber;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -1,5 +1,6 @@
 package com.Lunatech.IMDB.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,9 +13,14 @@ public class TitleBasic {
     private String primaryTitle;
     private String originalTitle;
     //0-> non-adult title,1->adult title
-    private boolean isAdult;
+    @Column(nullable=true)
+    //private boolean isAdult;
+    private int isAdult;
+    @Column(nullable=true)
     private int startYear;
+    @Column(nullable=true)
     private int endYear;
+    @Column(nullable=true)
     private int runtimeMinutes;
     //private String[] genres;
     private String genres;
@@ -54,12 +60,12 @@ public class TitleBasic {
         this.originalTitle = originalTitle;
     }
 
-    public boolean isAdult() {
+    public int getIsAdult() {
         return isAdult;
     }
 
-    public void setAdult(boolean adult) {
-        isAdult = adult;
+    public void setIsAdult(int isAdult) {
+        this.isAdult = isAdult;
     }
 
     public int getStartYear() {

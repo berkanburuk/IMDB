@@ -7,6 +7,7 @@ import java.io.Serializable;
 //@Table(uniqueConstraints = {@UniqueConstraint(columnNames = { "id", "ordering" }) })
 public class TitlePrincipal implements Serializable {
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)

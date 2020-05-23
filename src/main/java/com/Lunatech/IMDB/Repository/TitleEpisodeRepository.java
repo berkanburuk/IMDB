@@ -1,10 +1,9 @@
 package com.Lunatech.IMDB.Repository;
 
-import com.Lunatech.IMDB.Model.NameBasic;
+import com.Lunatech.IMDB.Model.TitleEpisode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NameBasicRepository extends JpaRepository<NameBasic,String> {
-
+public interface TitleEpisodeRepository extends JpaRepository<TitleEpisode,Integer> {
 }

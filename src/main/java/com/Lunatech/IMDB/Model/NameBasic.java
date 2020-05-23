@@ -1,5 +1,9 @@
 package com.Lunatech.IMDB.Model;
 
+import com.sun.istack.Nullable;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -10,7 +14,11 @@ public class NameBasic  {
     private String nconst;
 
     private String primaryName;
+    //@Value("${some.key:-1}")
+    @Column(nullable=true)
     private int birthYear;
+    //@Value("${some.key:-1}")
+    @Column(nullable=true)
     private int deathYear;
 
 

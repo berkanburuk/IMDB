@@ -22,21 +22,11 @@ public class TitleAkas implements Serializable{
     //private String[] attributes;
     private String attributes;
     //0-> Not, 1->Original
-    private boolean isOriginalTitle;
-
+    @Column(nullable=true)
+    //private boolean isOriginalTitle;
+    private int isOriginalTitle;
 
     public TitleAkas() {
-    }
-
-    public TitleAkas(String titleId, int ordering, String title, String region, String language, String types, String attributes, boolean isOriginalTitle) {
-        this.titleId = titleId;
-        this.ordering = ordering;
-        this.title = title;
-        this.region = region;
-        this.language = language;
-        this.types = types;
-        this.attributes = attributes;
-        this.isOriginalTitle = isOriginalTitle;
     }
 
     public String getTitleId() {
@@ -95,12 +85,11 @@ public class TitleAkas implements Serializable{
         this.attributes = attributes;
     }
 
-    public boolean isOriginalTitle() {
+    public int getIsOriginalTitle() {
         return isOriginalTitle;
     }
 
-    public void setOriginalTitle(boolean originalTitle) {
-        isOriginalTitle = originalTitle;
+    public void setIsOriginalTitle(int isOriginalTitle) {
+        this.isOriginalTitle = isOriginalTitle;
     }
-
 }
