@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,15 +21,5 @@ public class TitleBasicJPAResource {
     public List<TitleBasic> retrieveAllName(){
         return titleBasicRepository.findAll();
     }
-
-    @GetMapping("titlebasic/{id}")
-    public Optional<TitleBasic> retrieveOneName(@PathVariable String name){
-            Optional<TitleBasic> nameBasicOptinal = titleBasicRepository.findById(name);
-            if (!nameBasicOptinal.isPresent()){
-                throw new RuntimeException();
-            }
-            return nameBasicOptinal;
-    }
-
 
 }

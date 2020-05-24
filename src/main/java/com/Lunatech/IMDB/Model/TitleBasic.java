@@ -15,13 +15,13 @@ public class TitleBasic {
     //0-> non-adult title,1->adult title
     @Column(nullable=true)
     //private boolean isAdult;
-    private int isAdult;
+    private Integer isAdult;
     @Column(nullable=true)
-    private int startYear;
+    private Integer startYear;
     @Column(nullable=true)
-    private int endYear;
+    private Integer endYear;
     @Column(nullable=true)
-    private int runtimeMinutes;
+    private Integer runtimeMinutes;
     //private String[] genres;
     private String genres;
 
@@ -60,35 +60,35 @@ public class TitleBasic {
         this.originalTitle = originalTitle;
     }
 
-    public int getIsAdult() {
+    public Integer getIsAdult() {
         return isAdult;
     }
 
-    public void setIsAdult(int isAdult) {
+    public void setIsAdult(Integer isAdult) {
         this.isAdult = isAdult;
     }
 
-    public int getStartYear() {
+    public Integer getStartYear() {
         return startYear;
     }
 
-    public void setStartYear(int startYear) {
+    public void setStartYear(Integer startYear) {
         this.startYear = startYear;
     }
 
-    public int getEndYear() {
+    public Integer getEndYear() {
         return endYear;
     }
 
-    public void setEndYear(int endYear) {
+    public void setEndYear(Integer endYear) {
         this.endYear = endYear;
     }
 
-    public int getRuntimeMinutes() {
+    public Integer getRuntimeMinutes() {
         return runtimeMinutes;
     }
 
-    public void setRuntimeMinutes(int runtimeMinutes) {
+    public void setRuntimeMinutes(Integer runtimeMinutes) {
         this.runtimeMinutes = runtimeMinutes;
     }
 
@@ -98,5 +98,19 @@ public class TitleBasic {
 
     public void setGenres(String genres) {
         this.genres = genres;
+    }
+
+    @Override
+    public String toString() {
+        return "TitleBasic " +
+                "tconst='" + tconst + '\'' +
+                ", titleType='" + titleType + '\'' +
+                ", primaryTitle='" + primaryTitle + '\'' +
+                ", originalTitle='" + originalTitle + '\'' +
+                ", isAdult=" + isAdult +
+                ", startYear=" + startYear +
+                ", endYear=" + endYear +
+                ", runtimeMinutes=" + runtimeMinutes +
+                ", genres='" + genres + '\'';
     }
 }

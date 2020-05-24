@@ -1,32 +1,26 @@
 package com.Lunatech.IMDB.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-//@Table(uniqueConstraints = {@UniqueConstraint(columnNames = { "id", "ordering" }) })
 public class TitlePrincipal implements Serializable {
     @Id
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE)
     @GeneratedValue
     private int id;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     private TitleAkas titleAkas;
-/*
-    @ManyToOne(optional = false)
-    @JoinColumns({
-            @JoinColumn(name = "tconst", referencedColumnName = "titleId" ),
-            @JoinColumn(name = "ordering", referencedColumnName = "ordering")
-    })
-    private TitleAkas titleAkas;
-    //private String tconst;
-    //private int ordering;
-*/
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "nconst_name")
     private NameBasic nconst;
 
-    //private String nconst;
     private String category;
     private String job;
     private String characterr;
@@ -35,6 +29,14 @@ public class TitlePrincipal implements Serializable {
     public TitlePrincipal() {
     }
 
+    public TitlePrincipal(int id, TitleAkas titleAkas, NameBasic nconst, String category, String job, String characterr) {
+        this.id = id;
+        this.titleAkas = titleAkas;
+        this.nconst = nconst;
+        this.category = category;
+        this.job = job;
+        this.characterr = characterr;
+    }
 
     public int getId() {
         return id;
@@ -82,5 +84,17 @@ public class TitlePrincipal implements Serializable {
 
     public void setCharacterr(String characterr) {
         this.characterr = characterr;
+    }
+
+    @Override
+    public String toString() {
+        return "TitlePrincipal{" +
+                "id=" + id +
+                ", titleAkas=" + titleAkas +
+                ", nconst=" + nconst +
+                ", category='" + category + '\'' +
+                ", job='" + job + '\'' +
+                ", characterr='" + characterr + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,7 @@
 package com.Lunatech.IMDB.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,29 +12,24 @@ public class TitleCrew implements Serializable {
     @GeneratedValue
     private int id;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_TCONST")
     private TitleBasic tconst;
     //private String tconst;
-
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_Director")
     private NameBasic directors;
     //private Set<NameBasic> directors;
     //nconsts
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_Writer")
     private NameBasic writers;
     //private Set<NameBasic> writers;
 
     public TitleCrew() {
-    }
-
-    public TitleCrew(int id, TitleBasic tconst, NameBasic directors, NameBasic writers) {
-        this.id = id;
-        this.tconst = tconst;
-        this.directors = directors;
-        this.writers = writers;
     }
 
     public int getId() {
@@ -65,5 +62,15 @@ public class TitleCrew implements Serializable {
 
     public void setWriters(NameBasic writers) {
         this.writers = writers;
+    }
+
+    @Override
+    public String toString() {
+        return "TitleCrew{" +
+                "id=" + id +
+                ", tconst=" + tconst +
+                ", directors=" + directors +
+                ", writers=" + writers +
+                '}';
     }
 }

@@ -24,7 +24,7 @@ public class TitleAkas implements Serializable{
     //0-> Not, 1->Original
     @Column(nullable=true)
     //private boolean isOriginalTitle;
-    private int isOriginalTitle;
+    private Integer isOriginalTitle;
 
     public TitleAkas() {
     }
@@ -85,11 +85,25 @@ public class TitleAkas implements Serializable{
         this.attributes = attributes;
     }
 
-    public int getIsOriginalTitle() {
+    public Integer getIsOriginalTitle() {
         return isOriginalTitle;
     }
 
-    public void setIsOriginalTitle(int isOriginalTitle) {
+    public void setIsOriginalTitle(Integer isOriginalTitle) {
         this.isOriginalTitle = isOriginalTitle;
+    }
+
+    @Override
+    public String toString() {
+        return "TitleAkas{" +
+                "titleId='" + titleId + '\'' +
+                ", ordering=" + ordering +
+                ", title='" + title + '\'' +
+                ", region='" + region + '\'' +
+                ", language='" + language + '\'' +
+                ", types='" + types + '\'' +
+                ", attributes='" + attributes + '\'' +
+                ", isOriginalTitle=" + isOriginalTitle +
+                '}';
     }
 }

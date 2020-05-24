@@ -5,13 +5,29 @@ import java.util.Objects;
 
 public class TitleAkasPrincipal implements Serializable {
     private String titleId;
-    private int ordering;
+    private Integer ordering;
 
     public TitleAkasPrincipal() {
     }
 
-    public TitleAkasPrincipal(String titleId, int ordering) {
+    public TitleAkasPrincipal(String titleId, Integer ordering) {
         this.titleId = titleId;
+        this.ordering = ordering;
+    }
+
+    public String getTitleId() {
+        return titleId;
+    }
+
+    public void setTitleId(String titleId) {
+        this.titleId = titleId;
+    }
+
+    public Integer getOrdering() {
+        return ordering;
+    }
+
+    public void setOrdering(Integer ordering) {
         this.ordering = ordering;
     }
 

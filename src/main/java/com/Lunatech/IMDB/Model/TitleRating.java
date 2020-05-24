@@ -6,20 +6,19 @@ import javax.persistence.*;
 public class TitleRating {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(columnDefinition = "FK_TCONST")
     private TitleBasic tconst;
-    //private String tconst;
+
     @Column(nullable=true)
     private double averageRating;
     @Column(nullable=true)
-    private int numVotes;
+    private Integer numVotes;
 
 
     public TitleRating() {
-
     }
 
 
@@ -30,12 +29,11 @@ public class TitleRating {
         this.numVotes = numVotes;
     }
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,11 +53,21 @@ public class TitleRating {
         this.averageRating = averageRating;
     }
 
-    public int getNumVotes() {
+    public Integer getNumVotes() {
         return numVotes;
     }
 
-    public void setNumVotes(int numVotes) {
+    public void setNumVotes(Integer numVotes) {
         this.numVotes = numVotes;
+    }
+
+    @Override
+    public String toString() {
+        return "TitleRating{" +
+                "id=" + id +
+                ", tconst=" + tconst +
+                ", averageRating=" + averageRating +
+                ", numVotes=" + numVotes +
+                '}';
     }
 }

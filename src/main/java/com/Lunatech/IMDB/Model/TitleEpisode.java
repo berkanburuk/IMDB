@@ -62,4 +62,15 @@ public class TitleEpisode {
     public void setEpisodeNumber(int episodeNumber) {
         this.episodeNumber = episodeNumber;
     }
+
+    @Override
+    public String toString() {
+        return "TitleEpisode{" +
+                "id=" + id +
+                ", tconst=" + tconst +
+                ", parentTconst=" + parentTconst +
+                ", seasonNumber=" + seasonNumber +
+                ", episodeNumber=" + episodeNumber +
+                '}';
+    }
 }

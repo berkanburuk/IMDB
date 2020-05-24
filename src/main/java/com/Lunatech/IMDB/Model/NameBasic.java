@@ -16,16 +16,12 @@ public class NameBasic  {
     private String primaryName;
     //@Value("${some.key:-1}")
     @Column(nullable=true)
-    private int birthYear;
+    private Integer birthYear;
     //@Value("${some.key:-1}")
     @Column(nullable=true)
-    private int deathYear;
+    private Integer deathYear;
 
-
-    //private String[] primaryProfession;
     private String primaryProfession;
-    //tconsts – titles the person is known for
-    //private String[] knownForTitles;
     private String knownForTitles;
 
 
@@ -56,19 +52,19 @@ public class NameBasic  {
         this.primaryName = primaryName;
     }
 
-    public int getBirthYear() {
+    public Integer getBirthYear() {
         return birthYear;
     }
 
-    public void setBirthYear(int birthYear) {
+    public void setBirthYear(Integer birthYear) {
         this.birthYear = birthYear;
     }
 
-    public int getDeathYear() {
+    public Integer getDeathYear() {
         return deathYear;
     }
 
-    public void setDeathYear(int deathYear) {
+    public void setDeathYear(Integer deathYear) {
         this.deathYear = deathYear;
     }
 
@@ -86,6 +82,18 @@ public class NameBasic  {
 
     public void setKnownForTitles(String knownForTitles) {
         this.knownForTitles = knownForTitles;
+    }
+
+    @Override
+    public String toString() {
+        return "NameBasic{" +
+                "nconst='" + nconst + '\'' +
+                ", primaryName='" + primaryName + '\'' +
+                ", birthYear=" + birthYear +
+                ", deathYear=" + deathYear +
+                ", primaryProfession='" + primaryProfession + '\'' +
+                ", knownForTitles='" + knownForTitles + '\'' +
+                '}';
     }
 }
 
