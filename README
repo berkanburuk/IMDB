@@ -1,0 +1,12 @@
+IMDB 
+
+This project provides a template for IMDB dataset database which can be accessed via https://www.imdb.com/interfaces/. Some functionalities added: such as typecasted actors/actresses and a list of movies or TV shows that both people have shared. 
+
+Technologies
+Spring Boot - JAVA14
+Hibernate
+MySQL
+Rest APIs
+
+Run The App in a Development Mode
+Start application in development mode: From the Imdb Application class run the application.  Then it will automatically start the project from 8080 port.
