@@ -10,6 +10,7 @@ import com.Lunatech.IMDB.Repository.TitleBasicRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class NameBasicJPAResource {
     private static final Logger logger = LoggerFactory.getLogger(NameBasicJPAResource.class);
 
@@ -37,11 +39,11 @@ public class NameBasicJPAResource {
             throw new DataNotFoundExcetion("Data Not Found");
         }
         List<TitleBasic> titleBasicList = titleBasicRepository.findGenresByTitleId(nameBasicList.get(0).getKnownForTitles().split(","));
-        String result = nameBasicController.getTypecasted(titleBasicList);
-        if (result.length() == 0) {
+        String typecasting = nameBasicController.getTypecasted(titleBasicList);
+        if (typecasting.length() == 0) {
             throw new DataNotFoundExcetion("Person has no typecast character.");
         }
-        result += fullName + " typecast is " + result;
+        String result = fullName + " typecast is " + typecasting;
         return result;
     }
 
@@ -64,7 +66,7 @@ public class NameBasicJPAResource {
 
         Set<String> ids = titleBasicController.findCommonElements(firstKnownTitles,secondKnownTitles);
         if (ids.size()==0) {
-            throw new DataNotFoundExcetion(firstName + " and "+ secondName +" have no common movie or series.");
+            return firstName + " and "+ secondName +" have no common movie or series.";
         }
 
         List<TitleBasic> titleBasicList = new ArrayList<>();
