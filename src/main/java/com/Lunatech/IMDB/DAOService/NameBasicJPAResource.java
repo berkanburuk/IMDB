@@ -54,25 +54,25 @@ public class NameBasicJPAResource {
 
     @GetMapping("/nameBasic/coincidence")
     public String findCoincedence(@RequestParam String firstName, String secondName) {
-
+        //get ids' of the actors/actresses entered
         List<NameBasic> firstPerson = getIdFromPersonName(firstName);
         List<NameBasic> secondPerson = getIdFromPersonName(secondName);
         if (firstPerson == null || firstPerson.size() == 0 || secondPerson == null || secondPerson.size() == 0) {
             throw new DataNotFoundExcetion("First or Second person could not found in the server!");
         }
-
+        //gets the played movies/films' ids.
         List<String> firstKnownTitles = Arrays.asList(firstPerson.get(0).getKnownForTitles().split(","));
         List<String> secondKnownTitles = Arrays.asList(secondPerson.get(0).getKnownForTitles().split(","));
+
 
         Set<String> ids = titleBasicController.findCommonElements(firstKnownTitles,secondKnownTitles);
         if (ids.size()==0) {
             return firstName + " and "+ secondName +" have no common movie or series.";
         }
+        String[] idArray = ids.toArray(new String[ids.size()]);
 
-        List<TitleBasic> titleBasicList = new ArrayList<>();
-        ids.forEach((String id) -> {
-            titleBasicList.add(titleBasicRepository.getOne(id));
-        });
+        List<TitleBasic> titleBasicList;
+        titleBasicList =titleBasicRepository.findTitleById(idArray);
 
         String result = titleBasicController.printToScreen(titleBasicList,firstName,secondName);
 

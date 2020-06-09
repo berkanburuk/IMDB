@@ -22,6 +22,7 @@ public class NameBasicController {
     }
 
     public List<String> parseGenre(List<TitleBasic> titleBasicList){
+        //Parse the genres with ","
         List<String> genreArrayList = new ArrayList<>();
         for(TitleBasic tb : titleBasicList){
             String[] genreList = tb.getGenres().split(",");
@@ -33,7 +34,7 @@ public class NameBasicController {
     }
 
     public Map<String, Long> countGenres(List<String> genreArrayList){
-        //Counting the most played genres(typecast)
+        //Count the played genres and groups them.
         Map<String, Long> counters = genreArrayList.stream()
                 .collect(Collectors.groupingBy(tb -> tb,
                         Collectors.counting()));
@@ -41,16 +42,24 @@ public class NameBasicController {
     }
 
     public String findTheTypecast(Map<String, Long> counters){
+        //Finds the most played genres and finds out if it is genres
         String typeCas ="";
         Long num = -1L;
+        double total=0;
         for (String key: counters.keySet()) {
             Long number = counters.get(key);
+            total+=number;
             if (num<=number){
                 num=number;
                 typeCas = key;
             }
         }
-        return typeCas;
+        if (num> total/2){
+            return typeCas;
+        }else{
+            return "nothing because maximum type of one character is "+typeCas+ ", "+num+" times." + " It should play this role at least " +(int) Math.ceil(total/2)+" times.";
+        }
+
     }
 
 }

@@ -4,6 +4,7 @@ import com.Lunatech.IMDB.Model.TitleBasic;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,11 +19,10 @@ public class TitleBasicController {
     }
 
     public String printToScreen(List<TitleBasic> titleBasicList, String firstName, String secondName){
-        String result = firstName + " and " + secondName+" have ";
-        for (int i=0;i<titleBasicList.size()-1;i++){
-            result += "'"+titleBasicList.get(i).getOriginalTitle()+ "', ";
+        String result = firstName + " and " + secondName+" have such movies/series together as ";
+        for (int i=0;i<titleBasicList.size();i++){
+    //        result += titleBasicList.get(i).getOriginalTitle()+ "\n";
         }
-        result +="'" + titleBasicList.get(titleBasicList.size()-1).getOriginalTitle() +"'"+ " movies/series together.";
         return result;
     }
 

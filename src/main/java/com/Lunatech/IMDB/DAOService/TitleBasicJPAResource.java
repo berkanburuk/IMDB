@@ -24,4 +24,5 @@ public class TitleBasicJPAResource {
         return titleBasicRepository.findAll();
     }
 
+
 }
