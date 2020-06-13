@@ -1,15 +1,28 @@
 package com.Lunatech.IMDB.Controller;
 
 import com.Lunatech.IMDB.Model.TitleBasic;
-import org.springframework.stereotype.Component;
+import com.Lunatech.IMDB.Repository.TitleBasicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TitleBasicController {
+
+    @Autowired
+    private TitleBasicRepository titleBasicRepository;
+
+    @GetMapping("/titlebasic")
+    public List<TitleBasic> retrieveAllName(){
+        return titleBasicRepository.findAll();
+    }
+
     public Set<String> findCommonElements(List<String> first, List<String> second){
         Set<String> ids = first.stream()
                 .distinct()
@@ -19,11 +32,10 @@ public class TitleBasicController {
     }
 
     public String printToScreen(List<TitleBasic> titleBasicList, String firstName, String secondName){
-        String result = firstName + " and " + secondName+" have such movies/series together as ";
-        for (int i=0;i<titleBasicList.size();i++){
-    //        result += titleBasicList.get(i).getOriginalTitle()+ "\n";
-        }
-        return result;
+        final String[] result = {firstName + " and " + secondName + " have such movies/series together as "};
+        titleBasicList.stream().forEach(tb->{
+            result[0] += tb.getOriginalTitle()+ "\n";
+        });
+        return result[0];
     }
-
 }
