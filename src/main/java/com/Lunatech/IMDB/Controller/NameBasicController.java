@@ -130,7 +130,6 @@ public class NameBasicController {
             return "is found. His maximum repeated character genre is " + typeCas[0] + ", " + num[0] + " times."
                     + " To be able to be typecasting, it should be at least " + (int) Math.ceil(total[0] / 2);
         }
-
     }
 
 }
